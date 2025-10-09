@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+
 namespace _4
 {
     class Program
@@ -6,12 +7,27 @@ namespace _4
         static void Main(string[] args)
         {
             int thang, nam;
-            Console.WriteLine("Nhap thang (1-12): ");
-            thang = int.Parse(Console.ReadLine());
-            Console.WriteLine("Nhap nam: ");
-            nam = int.Parse(Console.ReadLine());
+
+            while (true)
+            {
+                Console.Write("Nhap thang (1-12): ");
+                if (int.TryParse(Console.ReadLine(), out thang) && thang >= 1 && thang <= 12)
+                    break;
+                else
+                    Console.WriteLine("Thang khong hop le. Vui long nhap lai tu 1-12!.\n");
+            }
+
+            while (true)
+            {
+                Console.Write("Nhap nam: ");
+                if (int.TryParse(Console.ReadLine(), out nam) && nam > 0)
+                    break;
+                else
+                    Console.WriteLine("Nam khong hop le. Vui long nhap lai.\n");
+            }
 
             int soNgay;
+
             switch (thang)
             {
                 case 1:
@@ -39,7 +55,9 @@ namespace _4
                     Console.WriteLine("Thang khong hop le!");
                     return;
             }
+
             Console.WriteLine($"Thang {thang} nam {nam} co {soNgay} ngay.");
         }
     }
 }
+

@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+
 namespace _02
 {
     class Program
@@ -13,17 +14,26 @@ namespace _02
 
         static void Main()
         {
-            Console.WriteLine("Nhap so nguyen duong n: ");
-            int n = int.Parse(Console.ReadLine());
+            int n;
+
+            while (true)
+            {
+                Console.Write("Nhap so nguyen duong n: ");
+                if (int.TryParse(Console.ReadLine(), out n) && n > 0)
+                    break;
+                else
+                    Console.WriteLine("Gia tri khong hop le! Vui long nhap lai so nguyen duong.");
+            }
+
             int tong = 0;
             for (int i = 2; i < n; i++)
             {
                 if (SoNguyenTo(i))
-                {
                     tong += i;
-                }
             }
-            Console.WriteLine("Tong cac so nguyen to <n: " + tong);
+
+            Console.WriteLine("Tong cac so nguyen to < n: " + tong);
         }
     }
 }
+

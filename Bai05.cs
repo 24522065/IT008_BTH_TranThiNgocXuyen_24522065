@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Bai05
+namespace _5
 {
     class Program
     {
@@ -28,3 +28,4 @@ namespace Bai05
         }
     }
 }
+

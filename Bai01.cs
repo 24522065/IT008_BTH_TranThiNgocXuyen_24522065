@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 
 namespace _01
@@ -8,10 +8,18 @@ namespace _01
         static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.Unicode;
-            Console.Write("Nhập kích thước mảng: ");
-            int n = int.Parse(Console.ReadLine());
-            int[] arr = new int[n];
+            int n;
 
+            while (true)
+            {
+                Console.Write("Nhập kích thước mảng: ");
+                if (int.TryParse(Console.ReadLine(), out n) && n > 0)
+                    break;
+                else
+                    Console.WriteLine(" Kích thước không hợp lệ! Vui lòng nhập số nguyên dương.\n");
+            }
+
+            int[] arr = new int[n];
             TaoMang(arr);
             MenuChon(arr);
         }
@@ -23,7 +31,7 @@ namespace _01
             for (int i = 0; i < arr.Length; i++)
                 arr[i] = rnd.Next(-100, 100);
 
-            Console.WriteLine("Mảng vừa tạo:");
+            Console.WriteLine(" Mảng vừa tạo:");
             foreach (int x in arr)
                 Console.Write(x + " ");
             Console.WriteLine("\n");
@@ -48,7 +56,7 @@ namespace _01
                 int chon;
                 if (!int.TryParse(Console.ReadLine(), out chon))
                 {
-                    Console.WriteLine("Vui lòng nhập số hợp lệ!\n");
+                    Console.WriteLine(" Vui lòng nhập số hợp lệ!\n");
                     continue;
                 }
 
@@ -72,11 +80,11 @@ namespace _01
                         break;
 
                     case 4:
-                        Console.WriteLine("Kết thúc chương trình!");
+                        Console.WriteLine(" Kết thúc chương trình!");
                         return;
 
                     default:
-                        Console.WriteLine("Lựa chọn không hợp lệ!");
+                        Console.WriteLine(" Lựa chọn không hợp lệ!");
                         break;
                 }
 
@@ -137,3 +145,4 @@ namespace _01
         }
     }
 }
+

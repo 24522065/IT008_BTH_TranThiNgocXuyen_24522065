@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace _6
 {
@@ -6,10 +6,24 @@ namespace _6
     {
         static void Main(string[] args)
         {
-            Console.Write("Nhap so dong n: ");
-            int n = int.Parse(Console.ReadLine());
-            Console.Write("Nhap so cot m: ");
-            int m = int.Parse(Console.ReadLine());
+            int n, m;
+
+            do
+            {
+                Console.Write("Nhap so dong n (>0): ");
+                if (!int.TryParse(Console.ReadLine(), out n) || n <= 0)
+                {
+                    Console.WriteLine("Gia tri n khong hop le. Vui long nhap lai!");
+                }
+            } while (n <= 0);
+            do
+            {
+                Console.Write("Nhap so cot m (>0): ");
+                if (!int.TryParse(Console.ReadLine(), out m) || m <= 0)
+                {
+                    Console.WriteLine("Gia tri m khong hop le. Vui long nhap lai!");
+                }
+            } while (m <= 0);
 
             int[,] a = TaoMaTranNgauNhien(n, m);
 
@@ -70,18 +84,16 @@ namespace _6
             } while (chon != 0);
         }
 
-        // 🔹 Tạo ma trận ngẫu nhiên
         static int[,] TaoMaTranNgauNhien(int n, int m)
         {
             Random rnd = new Random();
             int[,] a = new int[n, m];
             for (int i = 0; i < n; i++)
                 for (int j = 0; j < m; j++)
-                    a[i, j] = rnd.Next(1, 100); // số ngẫu nhiên từ 1 đến 99
+                    a[i, j] = rnd.Next(1, 100);
             return a;
         }
 
-        // 🔹 Xuất ma trận
         static void XuatMaTran(int[,] a)
         {
             int n = a.GetLength(0);
@@ -94,7 +106,6 @@ namespace _6
             }
         }
 
-        // 🔹 Tìm phần tử lớn nhất
         static int TimMax(int[,] a)
         {
             int max = a[0, 0];
@@ -103,7 +114,6 @@ namespace _6
             return max;
         }
 
-        // 🔹 Tìm phần tử nhỏ nhất
         static int TimMin(int[,] a)
         {
             int min = a[0, 0];
@@ -112,7 +122,6 @@ namespace _6
             return min;
         }
 
-        // 🔹 Tìm dòng có tổng lớn nhất
         static int TimDongTongLonNhat(int[,] a)
         {
             int n = a.GetLength(0);
@@ -133,7 +142,6 @@ namespace _6
             return dong;
         }
 
-        // 🔹 Kiểm tra số nguyên tố
         static bool LaNguyenTo(int x)
         {
             if (x < 2) return false;
@@ -142,7 +150,6 @@ namespace _6
             return true;
         }
 
-        // 🔹 Tính tổng các số không phải số nguyên tố
         static int TongKhongNguyenTo(int[,] a)
         {
             int sum = 0;
@@ -152,7 +159,6 @@ namespace _6
             return sum;
         }
 
-        // 🔹 Xóa dòng thứ k
         static int[,] XoaDong(int[,] a, int k)
         {
             int n = a.GetLength(0);
@@ -175,7 +181,6 @@ namespace _6
             return b;
         }
 
-        // 🔹 Xóa cột chứa phần tử lớn nhất
         static int[,] XoaCotChuaMax(int[,] a)
         {
             int n = a.GetLength(0);
@@ -207,4 +212,6 @@ namespace _6
         }
     }
 }
+
+
 

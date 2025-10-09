@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MaTranNgauNhien_Menu
+namespace _6
 {
     class Program
     {
@@ -207,3 +207,4 @@ namespace MaTranNgauNhien_Menu
         }
     }
 }
+
